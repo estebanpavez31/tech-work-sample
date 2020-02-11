@@ -58,11 +58,11 @@ struct WeatherViewModel {
                 let minTemp = temperature.minTemperature,
                 let maxTemp = temperature.maxTemperature {
 
-                currentTemperature = String(Int(currentTemp)) + NSLocalizedString("celcius_temp", comment: "celcius grades")
+                currentTemperature = String(Int(currentTemp)) + NSLocalizedString("celcius_temp", comment: "celcius degrees")
                 minimumTemp = NSLocalizedString("min_temp", comment: "minimum temp") +
-                    String(Int(minTemp)) + NSLocalizedString("celcius_temp", comment: "celcius grades")
+                    String(Int(minTemp)) + NSLocalizedString("celcius_temp", comment: "celcius degrees")
                 maximumTemp = NSLocalizedString("max_temp", comment: "maximum temp") +
-                    String(Int(maxTemp)) + NSLocalizedString("celcius_temp", comment: "celcius grades")
+                    String(Int(maxTemp)) + NSLocalizedString("celcius_temp", comment: "celcius degrees")
             }
         }
     }

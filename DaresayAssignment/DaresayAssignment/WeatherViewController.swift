@@ -13,17 +13,26 @@ import CoreLocation
 
 class WeatherViewController: UIViewController {
 
+    /// Label with the name of the city of the current location
     @IBOutlet weak var lblCityName: UILabel!
+    /// Image View with the current weather obtained from an external url
     @IBOutlet weak var imgWeather: UIImageView!
+    /// Label with the current temperature in Celcius degrees
     @IBOutlet weak var lblCurrentTemperature: UILabel!
+    /// Label with a description string of the current weather
     @IBOutlet weak var lblWeatherDescription: UILabel!
+    /// Label with the minimum temperature of the current day
     @IBOutlet weak var lblMinTemp: UILabel!
+    /// Label with the maximum temperature of the current day
     @IBOutlet weak var lblMaxTemp: UILabel!
+    /// Label with the hour of the sunrise time of the current day
     @IBOutlet weak var lblSunriseTime: UILabel!
+    /// Label with the hour of the sunset time of the current day
     @IBOutlet weak var lblSunsetTime: UILabel!
 
     /// Current location object with the latitude and longitude data
     var currentLocation: CLLocationCoordinate2D!
+    /// Weather view model to fill the UI of the controller
     var weatherViewModel: WeatherViewModel!
 
     override func viewDidLoad() {
@@ -41,6 +50,8 @@ class WeatherViewController: UIViewController {
         }
     }
 
+
+    /// Function that assign every UI field in the scene
     func fillUI() {
         lblCityName.text = weatherViewModel.cityName
         imgWeather.image = weatherViewModel.imageWeather
@@ -52,6 +63,9 @@ class WeatherViewController: UIViewController {
         lblSunsetTime.text = weatherViewModel.sunsetTime
     }
 
+
+    /// Recall the services to get the weather information
+    /// - Parameter sender: Button that makes the action
     @IBAction func refreshScreen(_ sender: Any) {
         getCurrentLocation()
     }
