@@ -2,6 +2,8 @@
 //  WeatherViewModel.swift
 //  DaresayAssignment
 //
+//  View Model to fill the UI of the Weather View Controller
+//
 //  Created by Esteban Pavez on 2020-02-11.
 //  Copyright © 2020 Esteban Pavez. All rights reserved.
 //
@@ -20,36 +22,14 @@ struct WeatherViewModel {
 
     init(weather: Weather) {
         cityName = weather.cityName ?? ""
+        setGeneralData(weather: weather)
+        setTemperatureData(weather: weather)
+        setSunData(weather: weather)
+    }
 
-        if let temperature = weather.temperature {
-            if let currentTemp = temperature.currentTemperature,
-                let minTemp = temperature.minTemperature,
-                let maxTemp = temperature.maxTemperature {
-
-                currentTemperature = String(Int(currentTemp)) + NSLocalizedString("celcius_temp", comment: "celcius grades")
-                minimumTemp = NSLocalizedString("min_temp", comment: "minimum temp") +
-                    String(Int(minTemp)) + NSLocalizedString("celcius_temp", comment: "celcius grades")
-                maximumTemp = NSLocalizedString("max_temp", comment: "maximum temp") +
-                    String(Int(maxTemp)) + NSLocalizedString("celcius_temp", comment: "celcius grades")
-            }
-        }
-
-        if let sunInfo = weather.sunInfo {
-            if let sunrise = sunInfo.sunrise, let sunset = sunInfo.sunset {
-                let dateSunrise = Date(timeIntervalSince1970: TimeInterval(sunrise))
-                let dateSunset = Date(timeIntervalSince1970: TimeInterval(sunset))
-
-                let formatter = DateFormatter()
-                formatter.dateFormat = "HH:mm"
-
-                let sunriseFormatted = formatter.string(from: dateSunrise)
-                let sunsetFormatted = formatter.string(from: dateSunset)
-
-                sunriseTime = sunriseFormatted
-                sunsetTime = sunsetFormatted
-            }
-        }
-
+    /// Sets the data related to the image and the description of the weather
+    /// - Parameter weather: Weather object with the info obtained of the service
+    mutating func setGeneralData(weather: Weather) {
         if weather.description != nil && !weather.description!.isEmpty {
             let weatherDescriptionData = weather.description![0]
 
@@ -66,6 +46,44 @@ struct WeatherViewModel {
                 } else {
                     imageWeather = UIImage()
                 }
+            }
+        }
+    }
+
+    /// Set the temperature data of the weather in the current location
+    /// - Parameter weather: Weather object with the info obtained of the service
+    mutating func setTemperatureData(weather: Weather) {
+        if let temperature = weather.temperature {
+            if let currentTemp = temperature.currentTemperature,
+                let minTemp = temperature.minTemperature,
+                let maxTemp = temperature.maxTemperature {
+
+                currentTemperature = String(Int(currentTemp)) + NSLocalizedString("celcius_temp", comment: "celcius grades")
+                minimumTemp = NSLocalizedString("min_temp", comment: "minimum temp") +
+                    String(Int(minTemp)) + NSLocalizedString("celcius_temp", comment: "celcius grades")
+                maximumTemp = NSLocalizedString("max_temp", comment: "maximum temp") +
+                    String(Int(maxTemp)) + NSLocalizedString("celcius_temp", comment: "celcius grades")
+            }
+        }
+    }
+
+
+    /// Set the data related with the sun in the current location
+    /// - Parameter weather: Weather object with the info obtained of the service
+    mutating func setSunData(weather: Weather) {
+        if let sunInfo = weather.sunInfo {
+            if let sunrise = sunInfo.sunrise, let sunset = sunInfo.sunset {
+                let dateSunrise = Date(timeIntervalSince1970: TimeInterval(sunrise))
+                let dateSunset = Date(timeIntervalSince1970: TimeInterval(sunset))
+
+                let formatter = DateFormatter()
+                formatter.dateFormat = "HH:mm"
+
+                let sunriseFormatted = formatter.string(from: dateSunrise)
+                let sunsetFormatted = formatter.string(from: dateSunset)
+
+                sunriseTime = sunriseFormatted
+                sunsetTime = sunsetFormatted
             }
         }
     }

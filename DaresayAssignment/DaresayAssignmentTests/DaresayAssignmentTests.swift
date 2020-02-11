@@ -19,16 +19,30 @@ class DaresayAssignmentTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testDescriptionWeatherViewModel() {
+        let weather = Weather.fixture()
+        let weatherViewModel = WeatherViewModel(weather: weather)
+
+        // what is it that we want to test?
+        XCTAssertEqual(weather.cityName, weatherViewModel.cityName)
+        XCTAssertEqual(weather.description![0].description, weatherViewModel.weatherDescription)
     }
 
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testSunInfoWeatherViewModel() {
+        let weather = Weather.fixture()
+        let weatherViewModel = WeatherViewModel(weather: weather)
+
+        XCTAssertEqual(weatherViewModel.sunriseTime, "07:54")
+        XCTAssertEqual(weatherViewModel.sunsetTime, "16:59")
+    }
+
+    func testTemperatureWeatherViewModel() {
+        let weather = Weather.fixture()
+        let weatherViewModel = WeatherViewModel(weather: weather)
+
+        XCTAssertEqual(weatherViewModel.currentTemperature, "4 ºC")
+        XCTAssertEqual(weatherViewModel.minimumTemp, "Min: 3 ºC")
+        XCTAssertEqual(weatherViewModel.maximumTemp, "Max: 6 ºC")
     }
 
 }

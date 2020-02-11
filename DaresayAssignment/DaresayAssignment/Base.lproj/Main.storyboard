@@ -359,7 +359,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="background" width="1920" height="1280"/>
+        <image name="background" width="960" height="640"/>
         <image name="repeat" catalog="system" width="64" height="48"/>
         <image name="sun.min" catalog="system" width="64" height="60"/>
         <image name="sunrise" catalog="system" width="64" height="48"/>

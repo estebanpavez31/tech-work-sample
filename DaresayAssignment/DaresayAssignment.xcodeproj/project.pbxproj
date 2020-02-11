@@ -26,6 +26,8 @@
 		1D7DF4CE23F314D200AC8546 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7DF4CD23F314D200AC8546 /* Logger.swift */; };
 		1DF87DDA23F33A6F0006A4AA /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF87DD923F33A6F0006A4AA /* WeatherViewModel.swift */; };
 		1DF87DDC23F34EA00006A4AA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1DF87DDB23F34EA00006A4AA /* Localizable.strings */; };
+		1DF87DDE23F35D580006A4AA /* Weather-fixture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF87DDD23F35D580006A4AA /* Weather-fixture.swift */; };
+		1DF87DE123F35F3D0006A4AA /* FixtureConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF87DE023F35F3D0006A4AA /* FixtureConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +64,8 @@
 		1D7DF4CD23F314D200AC8546 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		1DF87DD923F33A6F0006A4AA /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
 		1DF87DDB23F34EA00006A4AA /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		1DF87DDD23F35D580006A4AA /* Weather-fixture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Weather-fixture.swift"; sourceTree = "<group>"; };
+		1DF87DE023F35F3D0006A4AA /* FixtureConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixtureConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,7 @@
 		1D7DF49223F1AA1800AC8546 /* DaresayAssignment */ = {
 			isa = PBXGroup;
 			children = (
+				1DF87DDF23F35F200006A4AA /* Constants */,
 				1D7DF4B923F1F90E00AC8546 /* Helpers */,
 				1D7DF4B523F1E5DB00AC8546 /* Services */,
 				1D7DF4B623F1E5E100AC8546 /* Model */,
@@ -111,7 +116,6 @@
 				1D7DF49323F1AA1800AC8546 /* AppDelegate.swift */,
 				1D7DF49523F1AA1800AC8546 /* SceneDelegate.swift */,
 				1D7DF4C623F3136500AC8546 /* URLServices.swift */,
-				1D7DF4C823F313DF00AC8546 /* Constants.swift */,
 				1DF87DDB23F34EA00006A4AA /* Localizable.strings */,
 				1D7DF49923F1AA1800AC8546 /* Main.storyboard */,
 				1D7DF49C23F1AA1A00AC8546 /* Assets.xcassets */,
@@ -125,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				1D7DF4AA23F1AA1A00AC8546 /* DaresayAssignmentTests.swift */,
+				1DF87DDD23F35D580006A4AA /* Weather-fixture.swift */,
 				1D7DF4AC23F1AA1B00AC8546 /* Info.plist */,
 			);
 			path = DaresayAssignmentTests;
@@ -173,6 +178,15 @@
 				1D7DF4CD23F314D200AC8546 /* Logger.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		1DF87DDF23F35F200006A4AA /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				1D7DF4C823F313DF00AC8546 /* Constants.swift */,
+				1DF87DE023F35F3D0006A4AA /* FixtureConstants.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -278,6 +292,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D7DF4BD23F3089900AC8546 /* GetWeather.swift in Sources */,
+				1DF87DE123F35F3D0006A4AA /* FixtureConstants.swift in Sources */,
 				1D7DF4C923F313DF00AC8546 /* Constants.swift in Sources */,
 				1D7DF4C323F30D8400AC8546 /* WeatherTemperature.swift in Sources */,
 				1DF87DDA23F33A6F0006A4AA /* WeatherViewModel.swift in Sources */,
@@ -298,6 +313,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DF87DDE23F35D580006A4AA /* Weather-fixture.swift in Sources */,
 				1D7DF4AB23F1AA1A00AC8546 /* DaresayAssignmentTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
