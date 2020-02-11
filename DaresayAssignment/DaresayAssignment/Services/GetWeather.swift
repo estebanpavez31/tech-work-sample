@@ -45,7 +45,6 @@ class GetWeather: NSObject, URLSessionDelegate {
         }
 
         let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
 
         do {
             let weather = try decoder.decode(Weather.self, from: data ?? Data())

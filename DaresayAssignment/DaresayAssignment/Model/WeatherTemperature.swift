@@ -11,7 +11,13 @@
 import Foundation
 
 struct WeatherTemperature: Decodable {
-    var temp: Double?
-    var tempMin: Double?
-    var tempMax: Double?
+    var currentTemperature: Double?
+    var minTemperature: Double?
+    var maxTemperature: Double?
+
+    enum CodingKeys: String, CodingKey {
+        case currentTemperature = "temp"
+        case minTemperature = "temp_min"
+        case maxTemperature = "temp_max"
+    }
 }

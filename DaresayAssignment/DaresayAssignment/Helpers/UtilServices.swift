@@ -40,9 +40,13 @@ struct UtilServices {
                 Logger.log("statusCode = \(httpStatus.statusCode)")
                 Logger.log("response = \(String(describing: response))")
 
-                onCompletion(Data(), NSError(domain: "", code: httpStatus.statusCode, userInfo: [:]))
+                DispatchQueue.main.async {
+                    onCompletion(Data(), NSError(domain: "", code: httpStatus.statusCode, userInfo: [:]))
+                }
             } else {
-                onCompletion(data, nil)
+                DispatchQueue.main.async {
+                    onCompletion(data, nil)
+                }
             }
         })
         task.resume()

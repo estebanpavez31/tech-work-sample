@@ -19,4 +19,8 @@ struct Constants {
         // HTTP status code of a successful call
         static var statusCodeSuccess = 200
     }
+
+    struct URL {
+        static var imageWeather = "https://openweathermap.org/img/w/{imageId}.png"
+    }
 }
