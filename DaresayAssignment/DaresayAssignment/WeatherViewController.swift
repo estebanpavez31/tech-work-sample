@@ -29,6 +29,8 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var lblSunriseTime: UILabel!
     /// Label with the hour of the sunset time of the current day
     @IBOutlet weak var lblSunsetTime: UILabel!
+    /// Label with the current date formatted
+    @IBOutlet weak var lblCurrentDate: UILabel!
 
     /// Current location object with the latitude and longitude data
     var currentLocation: CLLocationCoordinate2D!
@@ -43,13 +45,14 @@ class WeatherViewController: UIViewController {
 
     /// Call the service to get the info of the weather
     func getCurrentLocation() {
+        
         GetWeather.sharedInstance.getWeather(currentLocation) { weatherObj in
+
             guard let weather = weatherObj else { return }
             self.weatherViewModel = WeatherViewModel(weather: weather)
             self.fillUI()
         }
     }
-
 
     /// Function that assign every UI field in the scene
     func fillUI() {
@@ -61,8 +64,8 @@ class WeatherViewController: UIViewController {
         lblMaxTemp.text = weatherViewModel.maximumTemp
         lblSunriseTime.text = weatherViewModel.sunriseTime
         lblSunsetTime.text = weatherViewModel.sunsetTime
+        lblCurrentDate.text = weatherViewModel.currentDate
     }
-
 
     /// Recall the services to get the weather information
     /// - Parameter sender: Button that makes the action
@@ -73,6 +76,7 @@ class WeatherViewController: UIViewController {
 }
 
 extension WeatherViewController: CLLocationManagerDelegate {
+
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else { return }
 

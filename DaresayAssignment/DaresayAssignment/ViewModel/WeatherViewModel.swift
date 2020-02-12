@@ -19,6 +19,7 @@ struct WeatherViewModel {
     var maximumTemp: String!
     var sunriseTime: String!
     var sunsetTime: String!
+    var currentDate: String!
 
     init(weather: Weather) {
         cityName = weather.cityName ?? ""
@@ -48,6 +49,12 @@ struct WeatherViewModel {
                 }
             }
         }
+
+        let formatter = DateFormatter()
+        formatter.dateFormat = "hh:mm a - EEEE, dd MMM yyyy"
+        let currentDateFormatted = formatter.string(from: Date())
+
+        currentDate = currentDateFormatted
     }
 
     /// Set the temperature data of the weather in the current location
