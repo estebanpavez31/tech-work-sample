@@ -51,14 +51,21 @@ class WeatherViewController: UIViewController {
 
     /// Call the service to get the info of the weather
     func getCurrentLocation() {
+
         if currentLocation != nil {
+
             activityIndicator.startAnimating()
             GetWeather.sharedInstance.getWeather(currentLocation) { weatherResponse in
-                guard let weather = weatherResponse else { return }
+                DispatchQueue.main.async {
+                    guard let weather = weatherResponse else {
+                        self.showAlertProblem()
+                        return
+                    }
 
-                self.weatherViewModel = WeatherViewModel(weather: weather)
-                self.fillUI()
-                self.showViews()
+                    self.weatherViewModel = WeatherViewModel(weather: weather)
+                    self.fillUI()
+                    self.showViews()
+                }
             }
         } else {
             LocationManagerUtil.checkLocationServices(viewController: self)
@@ -83,6 +90,16 @@ class WeatherViewController: UIViewController {
         viewTopWeather.isHidden = false
         viewDownWeather.isHidden = false
         activityIndicator.stopAnimating()
+    }
+
+    /// Shows an alert indicating a problem with the weather service response
+    func showAlertProblem() {
+        activityIndicator.stopAnimating()
+        let alert = UIAlertController(title: NSLocalizedString("location_error_title", comment: "loc error title"),
+                                      message: NSLocalizedString("location_error_message", comment: "loc error mess"),
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("ok_message", comment: "OK"), style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 
     /// Recall the services to get the weather information

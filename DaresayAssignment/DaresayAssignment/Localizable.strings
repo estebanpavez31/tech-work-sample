@@ -20,6 +20,8 @@
 
 /// Location
 
+"location_error_title" = "Error";
+"location_error_message" = "There's been a problem getting the weather data";
 "location_denied_title" = "Location Denied";
 "location_denied_message" = "This app needs to use your current location to make it work, in preferences you can activate it";
 "location_restricted_title" = "Location Restricted";
