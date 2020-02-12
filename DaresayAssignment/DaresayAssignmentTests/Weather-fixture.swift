@@ -2,6 +2,8 @@
 //  Weather-fixture.swift
 //  DaresayAssignmentTests
 //
+//  Fixture for unit testing weather model view
+//
 //  Created by Esteban Pavez on 2020-02-11.
 //  Copyright © 2020 Esteban Pavez. All rights reserved.
 //

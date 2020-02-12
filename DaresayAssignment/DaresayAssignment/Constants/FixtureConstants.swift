@@ -2,6 +2,8 @@
 //  FixtureConstants.swift
 //  DaresayAssignment
 //
+//  Constants used in the fixtures classes for unit testing
+//
 //  Created by Esteban Pavez on 2020-02-11.
 //  Copyright © 2020 Esteban Pavez. All rights reserved.
 //

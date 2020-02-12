@@ -2,10 +2,25 @@
   Localizable.strings
   DaresayAssignment
 
+  Labels presented in the UI of the app
+
   Created by Esteban Pavez on 2020-02-11.
   Copyright © 2020 Esteban Pavez. All rights reserved.
 */
 
+/// General
+
+"ok_message" = "OK";
+
+/// Weather
+
 "celcius_temp" = " ºC";
 "min_temp" = "Min: ";
 "max_temp" = "Max: ";
+
+/// Location
+
+"location_denied_title" = "Location Denied";
+"location_denied_message" = "This app needs to use your current location to make it work, in preferences you can activate it";
+"location_restricted_title" = "Location Restricted";
+"location_restricted_message" = "Your current location is restricted, please check the reason of the restriction in your iPhone";

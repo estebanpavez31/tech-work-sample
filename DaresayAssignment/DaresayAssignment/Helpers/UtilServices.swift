@@ -2,6 +2,8 @@
 //  UtilServices.swift
 //  DaresayAssignment
 //
+//  Utility class related to services calls
+//
 //  Created by Esteban Pavez on 2020-02-11.
 //  Copyright © 2020 Esteban Pavez. All rights reserved.
 //

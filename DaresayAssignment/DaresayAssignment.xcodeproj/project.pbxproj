@@ -107,12 +107,12 @@
 		1D7DF49223F1AA1800AC8546 /* DaresayAssignment */ = {
 			isa = PBXGroup;
 			children = (
-				1DF87DDF23F35F200006A4AA /* Constants */,
-				1D7DF4B923F1F90E00AC8546 /* Helpers */,
 				1D7DF4B523F1E5DB00AC8546 /* Services */,
 				1D7DF4B623F1E5E100AC8546 /* Model */,
 				1D7DF4B723F1E6F800AC8546 /* ViewModel */,
 				1D7DF4B823F1E6FF00AC8546 /* View */,
+				1DF87DDF23F35F200006A4AA /* Constants */,
+				1D7DF4B923F1F90E00AC8546 /* Helpers */,
 				1D7DF49323F1AA1800AC8546 /* AppDelegate.swift */,
 				1D7DF49523F1AA1800AC8546 /* SceneDelegate.swift */,
 				1D7DF4C623F3136500AC8546 /* URLServices.swift */,

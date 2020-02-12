@@ -21,9 +21,7 @@ struct LocationManagerUtil {
     static func checkLocationServices(viewController: UIViewController) {
         if CLLocationManager.locationServicesEnabled() {
             LocationManagerUtil.setupLocationManager(viewController: viewController)
-            LocationManagerUtil.checkLocationAuthorization()
-        } else {
-            // show alert with problem of location
+            LocationManagerUtil.checkLocationAuthorization(viewController: viewController)
         }
     }
 
@@ -34,20 +32,27 @@ struct LocationManagerUtil {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
 
-
     /// Checks the authorization status for the location service
-    static func checkLocationAuthorization() {
+    static func checkLocationAuthorization(viewController: UIViewController) {
         switch CLLocationManager.authorizationStatus() {
             case .authorizedWhenInUse:
                 locationManager.startUpdatingLocation()
                 break
             case .denied:
-                // show alert to send it to preferences
+                let alert = UIAlertController(title: NSLocalizedString("location_denied_title", comment: "loc denied title"),
+                                              message: NSLocalizedString("location_denied_message", comment: "loc denied mess"),
+                                              preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("ok_message", comment: "OK"), style: .default, handler: nil))
+                viewController.present(alert, animated: true, completion: nil)
                 break
             case .notDetermined:
                 locationManager.requestWhenInUseAuthorization()
             case .restricted:
-                // show alert to say that location es restricted
+                let alert = UIAlertController(title: NSLocalizedString("location_restricted_title", comment: "loc restricted title"),
+                                              message: NSLocalizedString("location_restricted_message", comment: "loc restricted mess"),
+                                              preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("ok_message", comment: "OK"), style: .default, handler: nil))
+                viewController.present(alert, animated: true, completion: nil)
                 break
             case .authorizedAlways:
                 break
@@ -55,5 +60,4 @@ struct LocationManagerUtil {
                 break
         }
     }
-
 }

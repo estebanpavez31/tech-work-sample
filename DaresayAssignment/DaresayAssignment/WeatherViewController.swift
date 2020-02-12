@@ -13,6 +13,10 @@ import CoreLocation
 
 class WeatherViewController: UIViewController {
 
+    /// Top view with weather information
+    @IBOutlet weak var viewTopWeather: UIView!
+    /// Downer view with weather information
+    @IBOutlet weak var viewDownWeather: UIView!
     /// Label with the name of the city of the current location
     @IBOutlet weak var lblCityName: UILabel!
     /// Image View with the current weather obtained from an external url
@@ -31,6 +35,8 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var lblSunsetTime: UILabel!
     /// Label with the current date formatted
     @IBOutlet weak var lblCurrentDate: UILabel!
+    /// Activity indicator that it shows when the service is called
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
     /// Current location object with the latitude and longitude data
     var currentLocation: CLLocationCoordinate2D!
@@ -45,12 +51,17 @@ class WeatherViewController: UIViewController {
 
     /// Call the service to get the info of the weather
     func getCurrentLocation() {
-        
-        GetWeather.sharedInstance.getWeather(currentLocation) { weatherObj in
+        if currentLocation != nil {
+            activityIndicator.startAnimating()
+            GetWeather.sharedInstance.getWeather(currentLocation) { weatherResponse in
+                guard let weather = weatherResponse else { return }
 
-            guard let weather = weatherObj else { return }
-            self.weatherViewModel = WeatherViewModel(weather: weather)
-            self.fillUI()
+                self.weatherViewModel = WeatherViewModel(weather: weather)
+                self.fillUI()
+                self.showViews()
+            }
+        } else {
+            LocationManagerUtil.checkLocationServices(viewController: self)
         }
     }
 
@@ -65,6 +76,13 @@ class WeatherViewController: UIViewController {
         lblSunriseTime.text = weatherViewModel.sunriseTime
         lblSunsetTime.text = weatherViewModel.sunsetTime
         lblCurrentDate.text = weatherViewModel.currentDate
+    }
+
+    /// Show hidden views at the moment that the localization works and the service was called
+    func showViews() {
+        viewTopWeather.isHidden = false
+        viewDownWeather.isHidden = false
+        activityIndicator.stopAnimating()
     }
 
     /// Recall the services to get the weather information
@@ -90,6 +108,6 @@ extension WeatherViewController: CLLocationManagerDelegate {
     }
 
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        LocationManagerUtil.checkLocationAuthorization()
+        LocationManagerUtil.checkLocationAuthorization(viewController: self)
     }
 }

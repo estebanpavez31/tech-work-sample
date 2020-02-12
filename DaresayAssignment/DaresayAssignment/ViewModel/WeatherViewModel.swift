@@ -31,6 +31,8 @@ struct WeatherViewModel {
     /// Sets the data related to the image and the description of the weather
     /// - Parameter weather: Weather object with the info obtained of the service
     mutating func setGeneralData(weather: Weather) {
+        
+        // Sets the description label and icon of the weather
         if weather.description != nil && !weather.description!.isEmpty {
             let weatherDescriptionData = weather.description![0]
 
@@ -50,6 +52,7 @@ struct WeatherViewModel {
             }
         }
 
+        // Format the current date
         let formatter = DateFormatter()
         formatter.dateFormat = "hh:mm a - EEEE, dd MMM yyyy"
         let currentDateFormatted = formatter.string(from: Date())
@@ -60,6 +63,8 @@ struct WeatherViewModel {
     /// Set the temperature data of the weather in the current location
     /// - Parameter weather: Weather object with the info obtained of the service
     mutating func setTemperatureData(weather: Weather) {
+
+        // Sets the minimum and maximum temperature formatted
         if let temperature = weather.temperature {
             if let currentTemp = temperature.currentTemperature,
                 let minTemp = temperature.minTemperature,
@@ -74,10 +79,11 @@ struct WeatherViewModel {
         }
     }
 
-
     /// Set the data related with the sun in the current location
     /// - Parameter weather: Weather object with the info obtained of the service
     mutating func setSunData(weather: Weather) {
+
+        // Sets the time of sunrise and sunset of the current location
         if let sunInfo = weather.sunInfo {
             if let sunrise = sunInfo.sunrise, let sunset = sunInfo.sunset {
                 let dateSunrise = Date(timeIntervalSince1970: TimeInterval(sunrise))
